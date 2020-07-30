@@ -1,4 +1,4 @@
 export default { 
-    URL_AUTH: 'http://localhost:3003/api',
-    URL_OPEN: 'http://localhost:3003/open-api'
+    URL_AUTH: 'https://luclima23-api.herokuapp.com/api',
+    URL_OPEN: 'https://luclima23-api.herokuapp.com/open-api'
 }

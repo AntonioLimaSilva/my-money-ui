@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot",
-    "prd": "webpack --progress -p"
+    "prd": "NODE_ENV=prd webpack --progress -p"
   },
   "keywords": [],
   "author": "",
