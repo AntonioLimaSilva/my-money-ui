@@ -2,22 +2,21 @@ import axios from 'axios'
 
 import { toastr } from 'react-redux-toastr'
 
-const BASE_URL_OAPI = 'http://localhost:3003/open-api'
-const BASE_URL_AUTH = 'http://localhost:3003/api'
+import env from '../env/enviroment'
 
 export const login = (values) => {
-    return submit(values, `${BASE_URL_OAPI}/login`)
+    return submit(values, `${env.URL_OPEN}/login`)
 }
 
 export const signup = (values) => {
-    return submit(values, `${BASE_URL_AUTH}/signup`)
+    return submit(values, `${env.URL_AUTH}/signup`)
 }
 
 export const submit = (values, url) => {
     return dispatch => {
         axios.post(url, values)
             .then(resp => {
-                dispatch( { type: 'USER_FETCHED', payload: resp.data })
+                dispatch([{ type: 'USER_FETCHED', payload: resp.data } ])
             })
             .catch(e => {
                 e.response.data.errors.forEach(
@@ -33,7 +32,7 @@ export function logout() {
 export function validateToken(token) {
     return dispatch => {
         if (token) {
-            axios.post(`${BASE_URL_OAPI}/validateToken`, { token })
+            axios.post(`${env.URL_OPEN}/validateToken`, { token })
                 .then(resp => {
                     dispatch({ type: 'TOKEN_VALIDATED', payload: resp.data.valid })
                 })

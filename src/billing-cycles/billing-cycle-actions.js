@@ -1,15 +1,13 @@
 import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm, initialize } from 'redux-form'
+import { initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tab-actions'
-
-const BASE_URL = 'http://localhost:3003/api'
+import env from '../env/enviroment'
 
 const INITIAL_VALUES = { debits: [{}] }
 
 export const getBillingCycles = () => {
-    const response = axios.get(`${BASE_URL}/billingCycles`)
-
+    const response = axios.get(`${env.URL_AUTH}/billingCycles`)
     return {
         type: 'BILLING_CYCLE_SEARCHED',
         payload: response
@@ -43,11 +41,12 @@ export const showDelete = (bc) => ([
 
 //initialize => é um action creator do redux
 export const init = () => ([
-    showTabs('tabList', 'tabCreate'),
-    selectTab('tabList'),
-    getBillingCycles(),
-    initialize('billingCycleForm', INITIAL_VALUES)
-])
+        showTabs('tabList', 'tabCreate'),
+        selectTab('tabList'),
+        getBillingCycles(),
+        initialize('billingCycleForm', INITIAL_VALUES)
+    ]
+)
 
  /**
   *  é possível acessar os métodos do http (post, put, delete, get) de forma dinamica 
@@ -57,7 +56,7 @@ const submit = (values, method) => {
     return dispatch => {
         const id = values._id ? values._id : ''
        
-        axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+        axios[method](`${env.URL_AUTH}/billingCycles/${id}`, values)
         .then(_ => {
             toastr.success('Sucesso', 'Operação realizada com sucesso!')
             dispatch(init())
