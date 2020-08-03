@@ -15,7 +15,7 @@ export default class select extends Component {
             <select {...this.props.input}
                 className='form-control'
                 placeholder={this.props.placeholder}
-                readOnly={this.props.readOnly}
+                disabled={this.props.readOnly}
                 type={this.props.type}>
                 <option>Selecione um item</option>
 

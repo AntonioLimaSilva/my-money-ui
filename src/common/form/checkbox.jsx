@@ -4,7 +4,7 @@ export default props => (
     <div className="checkbox">
         <label>
             <input {...props.input} type="checkbox" placeholder={props.placeholder}
-                readOnly={props.readOnly}
+                disabled={props.readOnly}
                 type={props.type} >{ props.label }</input>
         </label>
     </div>
