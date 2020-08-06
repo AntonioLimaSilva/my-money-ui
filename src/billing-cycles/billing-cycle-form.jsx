@@ -18,12 +18,15 @@ class BillingCycleForm extends Component {
         const totInd2 = this.props.debits
             .map(d => d.responsibleName && d.responsibleName.includes('ELAINE_LIMA')
                 && d.hasSplit && +d.value || 0).reduce(sum)
+        const media1 = totInd1 / 2;
+        const media2 = totInd2 / 2;
         if (totInd1 > totInd2) {
-            person.debt = totInd1 - totInd2
+            person.debt = media1 - media2
             person.debtName = 'Elaine'
             person.favoredName = 'Luciano'
         } else {
-            person.debt = totInd2 - totInd1
+            console.log('Media de ELAINE: ', media2)
+            person.debt = media2 - media1
             person.debtName = 'Luciano'
             person.favoredName = 'Elaine'
         }
