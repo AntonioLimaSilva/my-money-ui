@@ -3,7 +3,7 @@ import ValueBox from '../common/widget/value-box'
 import Row from '../common/layout/row'
 import Grid from '../common/layout/grid'
 
-export default ({totalDebit, subTotalDebit, totalIndividual1, totalIndividual2}) => (
+export default ({totalDebit, subTotalDebit, totalIndividual1, totalIndividual2, person}) => (
     <Grid cols='12'>
         <fieldset>
             <legend>Resumo</legend>
@@ -18,6 +18,9 @@ export default ({totalDebit, subTotalDebit, totalIndividual1, totalIndividual2})
                     value={`R$ ${ totalIndividual1 || 0 }`} text='Total individual de Luciano' />
                 <ValueBox cols='12 4' color='aqua' icon='credit-card'
                     value={`R$ ${ totalIndividual2 || 0 }`} text='Total individual de Elaine' />
+                <ValueBox cols='12 4' color='yellow' icon='money'
+                          value={`R$ ${ person.debt || 0 }`}
+                          text={`${person.debtName || ''} deve para ${person.favoredName || ''}`} />
             </Row>
         </fieldset>
     </Grid>

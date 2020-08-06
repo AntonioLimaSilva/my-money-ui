@@ -18,12 +18,16 @@ class Dashboard extends Component {
 
         const { totalDebit } = this.props.summary
         const { subTotalDebit } = this.props.summaryShared
+        const totalIndividual1 = 0
+        const totalIndividual2 = 0
+        const person = {}
 
         return (
             <div>
                 <ContentHeader title='Dashboard' small='Versão 1.0.0' />
                 <Content>
-                    <Summary totalDebit={ totalDebit } subTotalDebit={ subTotalDebit } />
+                    <Summary totalDebit={ totalDebit } subTotalDebit={ subTotalDebit }
+                             totalIndividual1={ totalIndividual1 } totalIndividual2={ totalIndividual2 } person={ person }  />
                 </Content>
             </div>
         )

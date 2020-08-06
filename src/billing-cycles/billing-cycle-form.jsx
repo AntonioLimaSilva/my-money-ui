@@ -11,20 +11,35 @@ class BillingCycleForm extends Component {
 
     calculateSummary() {
         const sum = (t, v) => t + v
+        const person = {}
+        const totInd1 = this.props.debits
+            .map(d =>  d.responsibleName && d.responsibleName.includes('LUCIANO_LIMA')
+                && d.hasSplit && +d.value || 0).reduce(sum)
+        const totInd2 = this.props.debits
+            .map(d => d.responsibleName && d.responsibleName.includes('ELAINE_LIMA')
+                && d.hasSplit && +d.value || 0).reduce(sum)
+        if (totInd1 > totInd2) {
+            person.debt = totInd1 - totInd2
+            person.debtName = 'Elaine'
+            person.favoredName = 'Luciano'
+        } else {
+            person.debt = totInd2 - totInd1
+            person.debtName = 'Luciano'
+            person.favoredName = 'Elaine'
+        }
         return {
             subTotalDebit: this.props.debits.map(d => +d.value || 0).reduce(sum),
             totalDebit: this.props.debits.map(d => d.hasSplit && +d.value || 0).reduce(sum),
-            totalIndividual1: this.props.debits
-                .map(d =>  d.responsibleName && d.responsibleName.includes('LUCIANO_LIMA') && +d.value || 0).reduce(sum),
-            totalIndividual2: this.props.debits
-                .map(d => d.responsibleName && d.responsibleName.includes('ELAINE_LIMA') && +d.value || 0).reduce(sum)
+            totalIndividual1: totInd1,
+            totalIndividual2: totInd2,
+            person: person
         }
     }
 
     render() {
 
         const { handleSubmit, init, readOnly, debits } = this.props
-        const { subTotalDebit, totalDebit, totalIndividual1, totalIndividual2 } = this.calculateSummary()
+        const { subTotalDebit, totalDebit, totalIndividual1, totalIndividual2, person } = this.calculateSummary()
 
         return (
             <form onSubmit={ handleSubmit } role='form'>
@@ -36,7 +51,7 @@ class BillingCycleForm extends Component {
                     <Field name='year' component={ LabelAndInput } readOnly={ readOnly } type='number' 
                         label='Ano' cols='12 4' placeholder='Informe um nome'/>
                     <Summary totalDebit={ subTotalDebit } subTotalDebit={ totalDebit }
-                        totalIndividual1={ totalIndividual1 } totalIndividual2={ totalIndividual2 } />
+                        totalIndividual1={ totalIndividual1 } totalIndividual2={ totalIndividual2 } person={ person } />
                     <ItemList cols='12' legend='Lista de débitos' list={ debits } readOnly={readOnly} />
                 </div>
 
