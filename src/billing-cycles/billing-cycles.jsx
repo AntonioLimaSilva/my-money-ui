@@ -10,7 +10,7 @@ import TabHeader from '../common/tab/tab-header'
 import TabContent from '../common/tab/tab-content'
 import List from './billing-cycles-list'
 import Form from './billing-cycle-form'
-import { add, update, remove, init } from '../billing-cycles/billing-cycle-actions'
+import { add, update, remove, init } from './billing-cycle-actions'
 
 class BillingCycle extends Component {
 

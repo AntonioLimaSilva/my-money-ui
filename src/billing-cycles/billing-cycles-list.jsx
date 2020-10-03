@@ -16,17 +16,17 @@ class BillingCycleList extends Component {
     renderRows() {
         const list = this.props.list || []
 
-        return list.map( bc => (
+        return list.map(bc => (
             <tr key={bc._id}>
                 <td>{bc.name}</td>
                 <td>{bc.month}</td>
                 <td>{bc.year}</td>
                 <td>
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(bc)}>
-                        <i className='fa fa-pencil'></i>
+                        <i className='fa fa-pencil'/>
                     </button>
                     <button className='btn btn-danger' onClick={() => this.props.showDelete(bc)}>
-                        <i className='fa fa-trash-o'></i>
+                        <i className='fa fa-trash-o'/>
                     </button>
                 </td>
             </tr>

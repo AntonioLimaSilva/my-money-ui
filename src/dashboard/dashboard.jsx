@@ -10,7 +10,7 @@ import { getSummary, getSummaryShared } from './dashboard-actions'
 class Dashboard extends Component {
 
     componentWillMount() {
-        this.props.getSummary(),
+        this.props.getSummary()
         this.props.getSummaryShared()
     }
 
@@ -24,7 +24,7 @@ class Dashboard extends Component {
 
         return (
             <div>
-                <ContentHeader title='Dashboard' small='Versão 1.0.0' />
+                <ContentHeader title='Dashboard' small='Versão 1.0.1' />
                 <Content>
                     <Summary totalDebit={ totalDebit } subTotalDebit={ subTotalDebit }
                              totalIndividual1={ totalIndividual1 } totalIndividual2={ totalIndividual2 } person={ person }  />

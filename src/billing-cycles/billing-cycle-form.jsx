@@ -25,7 +25,6 @@ class BillingCycleForm extends Component {
             person.debtName = 'Elaine'
             person.favoredName = 'Luciano'
         } else {
-            console.log('Media de ELAINE: ', media2)
             person.debt = media2 - media1
             person.debtName = 'Luciano'
             person.favoredName = 'Elaine'
@@ -41,7 +40,7 @@ class BillingCycleForm extends Component {
 
     render() {
 
-        const { handleSubmit, init, readOnly, debits } = this.props
+        const { handleSubmit, readOnly, debits } = this.props
         const { subTotalDebit, totalDebit, totalIndividual1, totalIndividual2, person } = this.calculateSummary()
 
         return (
@@ -63,7 +62,7 @@ class BillingCycleForm extends Component {
                         { this.props.submitLabel }
                     </button>
                     <button type='button' className='btn btn-default' 
-                        onClick={ init }>Cancelar</button>
+                        onClick={ this.props.init }>Cancelar</button>
                 </div>
             </form>
         )
@@ -76,6 +75,5 @@ const selector = formValueSelector('billingCycleForm')
 
 const mapStateToProps = (state) => ({ debits: selector(state, 'debits') })
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)

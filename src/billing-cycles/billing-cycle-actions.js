@@ -41,12 +41,10 @@ export const showDelete = (bc) => ([
 
 //initialize => é um action creator do redux
 export const init = () => ([
-        showTabs('tabList', 'tabCreate'),
-        selectTab('tabList'),
-        getBillingCycles(),
-        initialize('billingCycleForm', INITIAL_VALUES)
-    ]
-)
+    showTabs('tabList', 'tabCreate'),
+    selectTab('tabList'),
+    initialize('billingCycleForm', INITIAL_VALUES)
+])
 
  /**
   *  é possível acessar os métodos do http (post, put, delete, get) de forma dinamica 

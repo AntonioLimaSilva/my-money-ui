@@ -60,15 +60,15 @@ class ItemList extends Component {
                 <td>
                     <button type='button' className='btn btn-success' disabled={ this.props.readOnly }
                         onClick={() => this.add(index + 1)}>
-                        <i className="fa fa-plus"></i>
+                        <i className="fa fa-plus"/>
                     </button>
                     <button type='button' className='btn btn-warning' disabled={ this.props.readOnly }
                         onClick={() => this.add(index + 1, item)}>
-                        <i className="fa fa-clone"></i>
+                        <i className="fa fa-clone"/>
                     </button>
                     <button type='button' className='btn btn-danger' disabled={ this.props.readOnly }
                         onClick={() => this.remove(index)}>
-                        <i className="fa fa-trash-o"></i>
+                        <i className="fa fa-trash-o"/>
                     </button>
                 </td>
             </tr>
