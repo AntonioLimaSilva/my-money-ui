@@ -8,8 +8,7 @@ import thunk from 'redux-thunk'
 import Rautes from './main/routes'
 import reducers from '../src/main/reducers'
 
-const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ 
-      && window.__REDUX_DEVTOOLS_EXTENSION__()
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const store = applyMiddleware(promisse, multi, thunk)(createStore)(reducers, devTools)
 
