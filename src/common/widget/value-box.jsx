@@ -10,10 +10,9 @@ export default props => (
                 <div className='inner'>
                     <h3>{props.value}</h3>
                     <p>{props.text} <span>{props.value}</span></p>
-
                 </div>
                 <div className='icon'>
-                    <i className={`fa fa-${props.icon}`}></i>
+                    <i className={`fa fa-${props.icon}`}/>
                 </div>
             </div>
         </Grid>

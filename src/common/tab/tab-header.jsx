@@ -17,7 +17,7 @@ class TabHeader extends Component {
                 <li className={ selected ? 'active' : '' }> 
                     <a href='javascript:;' data-toggle='tab' data-target={this.props.target}
                         onClick={ () => this.props.selectTab(this.props.target) }>
-                        <i className={`fa fa-${this.props.icon}`}></i> {this.props.label}
+                        <i className={`fa fa-${this.props.icon}`}/> {this.props.label}
                     </a> 
                 </li>
             </If>
